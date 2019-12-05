@@ -23,7 +23,7 @@ def restore_gravity(ints):
         second = ints[pos+2]
         output = ints[pos+3]
 
-        result = operator[action](first, second)
+        result = operator[action](ints[first], ints[second])
         ints[output] = result
 
         pos+=4

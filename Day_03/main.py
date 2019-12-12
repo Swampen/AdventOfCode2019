@@ -4,15 +4,17 @@ route2 = set()
 def main(wires):
     mapRoute(wires[0], route1)
     mapRoute(wires[1], route2)
-    intersection = route1 & route2
-    print(intersection)
+    intersections = route1 & route2
+    compare(intersections)
     return
 
-def compare(route1, route2):
-    for i in route1:
-        for j in route2:
-            if i[0] == j[0]:
-                print(i, j)
+def compare(intersections):
+    shorotest = 9999999
+    for i in intersections:
+        length = abs(i[0]) + abs(i[1])
+        if length < shorotest:
+            shorotest = length
+    print(shorotest)
 
 def mapRoute(wire, route):
     pos = [0,0]

@@ -1,16 +1,17 @@
 
-route1 = []
-route2 = []
+route1 = set()
+route2 = set()
 def main(wires):
     mapRoute(wires[0], route1)
     mapRoute(wires[1], route2)
-    compare(route1, route2)
+    intersection = route1 & route2
+    print(intersection)
     return
 
 def compare(route1, route2):
     for i in route1:
         for j in route2:
-            if i == j:
+            if i[0] == j[0]:
                 print(i, j)
 
 def mapRoute(wire, route):
@@ -33,25 +34,25 @@ def mapStep(direction, steps, pos, route):
 def left(steps, pos, route):
     for i in range(steps):
         pos[0] -= 1
-        route.append(pos)
+        route.add(tuple(pos))
 
 
 
 def right(steps, pos, route):
     for i in range(steps):
         pos[0] += 1
-        route.append(pos)
+        route.add(tuple(pos))
 
 
 def up(steps, pos, route):
     for i in range(steps):
         pos[1] += 1
-        route.append(pos)
+        route.add(tuple(pos))
 
 def down(steps, pos, route):
     for i in range(steps):
         pos[1] -= 1
-        route.append(pos)
+        route.add(tuple(pos))
 
 def getInput():
     with open("input.txt") as input:

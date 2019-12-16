@@ -13,20 +13,10 @@ def main(wires):
     plt.scatter(*zip(*route2), s=1)
     plt.scatter(*zip(*list(intersections)), marker='x')
     plt.scatter(*zip((0,0)), marker='o', s=10)
-    plt.savefig('filename.png', dpi=1200)
-    plt.figure(dpi=1200)
     plt.show()
 
 def findShortestInLength(intersections, route1, route2):
-    shortest = 9999999
-    for i in intersections:
-        route1Length = route1.index(i)
-        route2Length = route2.index(i)
-        print(route1Length, route1Length)
-        length = route1Length + route2Length
-        if length < shortest:
-            shortest = length
-    return shortest
+    return min( route1.index(i)+1 +route2.index(i)+1 for i in intersections)
 
 def mapRoute(wire, route):
     pos = [0,0]
